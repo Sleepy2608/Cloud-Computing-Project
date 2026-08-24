@@ -1,170 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SecureCloud Demo</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 900px;
-            text-align: center;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border: 1px solid #38bdf8;
-            border-radius: 20px;
-            color: #38bdf8;
-            margin-bottom: 25px;
-        }
-
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .description {
-            font-size: 20px;
-            color: #cbd5e1;
-            margin-bottom: 40px;
-        }
-
-        .security-card {
-            background: #1e293b;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .security-card h2 {
-            margin-bottom: 20px;
-        }
-
-        .status {
-            font-size: 24px;
-            color: #4ade80;
-            margin-bottom: 15px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .feature {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
-        }
-
-        .feature h3 {
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            color: #94a3b8;
-        }
-
-        footer {
-            margin-top: 40px;
-            color: #64748b;
-        }
-
-        @media (max-width: 700px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-    <div class="badge">
-        CLOUD SECURITY DEMO
+    <div class="logo">
+        🔐 SecureCloud
     </div>
 
-    <h1>SecureCloud</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+    </nav>
 
-    <p class="description">
-        HTTPS & Cloud Security Demonstration
-    </p>
+</header>
 
-    <div class="security-card">
+
+<main class="container">
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="badge">
+            CLOUD SECURITY DEMO
+        </div>
+
+        <h1>SecureCloud</h1>
+
+        <p class="description">
+            HTTPS & Cloud Security Demonstration
+        </p>
+
+    </section>
+
+
+    <!-- Security Status -->
+
+    <section class="security-card">
 
         <h2>Website Security Status</h2>
 
-        <div class="status">
-            🔒 Secure Connection
+        <div id="securityStatus" class="status">
+            Checking connection...
         </div>
 
         <p>
-            This website is designed to demonstrate
-            HTTPS, SSL/TLS and secure cloud access.
+            This website demonstrates HTTPS,
+            SSL/TLS encryption and secure cloud access.
         </p>
 
-    </div>
+    </section>
 
-    <div class="features">
+
+    <!-- Features -->
+
+    <section class="features">
 
         <div class="feature">
+
             <h3>🔐 HTTPS</h3>
+
             <p>
                 Secure communication using
                 SSL/TLS encryption.
             </p>
+
         </div>
 
+
         <div class="feature">
+
             <h3>☁️ AWS Cloud</h3>
+
             <p>
                 Website deployed on
                 cloud infrastructure.
             </p>
+
         </div>
 
+
         <div class="feature">
+
             <h3>🛡️ Security</h3>
+
             <p>
                 Access controlled using
                 firewall security rules.
             </p>
+
         </div>
 
-    </div>
+    </section>
 
-    <footer>
-        SecureCloud Demo — Cloud Computing Project
-    </footer>
 
-</div>
+    <!-- Login Button -->
+
+    <section class="login-section">
+
+        <p>
+            Test secure authentication access
+        </p>
+
+        <a href="login.html" class="btn">
+            Go to Login
+        </a>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    SecureCloud Demo — Cloud Computing Project
+
+</footer>
+
+
+<script src="js/security.js"></script>
 
 </body>
+
 </html>

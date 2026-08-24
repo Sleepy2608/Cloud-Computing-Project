@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SecureCloud - Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="container">
+    <div class="logo">🔐 SecureCloud</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+
+        <div class="badge">
+            🔒 SECURE LOGIN
+        </div>
+
+        <h1>Login</h1>
+
+        <p>
+            Secure access demonstration
+        </p>
+
+    </section>
+
+    <section class="status">
+
+        <h2>Authentication</h2>
+
+        <form id="loginForm">
+
+            <div style="margin: 20px 0;">
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Username"
+                    required
+                    style="padding: 12px; width: 80%;"
+                >
+            </div>
+
+            <div style="margin: 20px 0;">
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                    style="padding: 12px; width: 80%;"
+                >
+            </div>
+
+            <button
+                type="submit"
+                class="btn"
+                style="border: none; cursor: pointer;"
+            >
+                Login
+            </button>
+
+        </form>
+
+        <p id="loginMessage" style="margin-top: 20px;"></p>
+
+    </section>
+
+</main>
+
+<script src="js/security.js"></script>
+
+</body>
+</html>
