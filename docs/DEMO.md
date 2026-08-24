@@ -131,31 +131,37 @@ Trong **EC2 → Security Groups**, tạo 3 nhóm:
 ## 4. Giai đoạn 3 — Tạo EC2 Web Server (Private Subnet)
 
 1. **EC2 → Launch Instance**
-2. AMI: **Ubuntu 24.04 LTS**
+2. AMI: **Amazon Linux 2023** (`al2023-ami-*-x86_64`) — khớp với plan CLI
 3. Instance type: `t2.micro` / `t3.micro` (free tier)
 4. VPC: `securecloud-vpc`, Subnet: `securecloud-private`
 5. **Public IPv4: None** ← điểm demo quan trọng
 6. Security Group: `securecloud-web-sg`
-7. Key pair: tạo mới `securecloud-key` (lưu file `.pem`, **đừng commit lên git**)
+7. Key pair: dùng key `keypair` đã tạo ở bước chuẩn bị (file `keypair.pem`, **đừng commit lên git**)
 8. Launch → ghi lại **Private IP** (VD `10.0.2.10`)
 
 ---
 
 ## 5. Giai đoạn 4 — Cài Nginx & Deploy website
 
-SSH vào Web Server (qua Bastion, xem mục 6):
+SSH vào Web Server (qua Bastion, xem mục 6) — Amazon Linux dùng user `ec2-user`:
 
 ```bash
-sudo apt update
-sudo apt install nginx -y
-
-sudo mkdir -p /var/www/securecloud
+sudo yum update -y
+sudo yum install -y nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
 ```
 
-Copy nội dung `Code/` lên server (đặt vào `/var/www/securecloud`):
+Copy nội dung `Code/` lên server bằng `scp` từ máy cá nhân (hoặc qua Bastion):
+
+```bash
+scp -i keypair.pem -r Code/* ec2-user@10.0.2.10:/usr/share/nginx/html/
+```
+
+Kết quả trong `/usr/share/nginx/html`:
 
 ```text
-/var/www/securecloud/
+/usr/share/nginx/html/
 ├── index.html
 ├── login.html
 ├── dashboard.html
@@ -163,15 +169,17 @@ Copy nội dung `Code/` lên server (đặt vào `/var/www/securecloud`):
 └── js/security.js
 ```
 
-Tạo config Nginx từ file `nginx/securecloud.conf` của project:
+Tạo config Nginx từ file `nginx/securecloud.conf` của project
+(Amazon Linux đọc config trong `/etc/nginx/conf.d/`):
 
 ```bash
-sudo tee /etc/nginx/sites-available/securecloud.conf
-sudo ln -s /etc/nginx/sites-available/securecloud.conf /etc/nginx/sites-enabled/
-sudo rm -f /etc/nginx/sites-enabled/default   # xóa site mặc định
+sudo cp securecloud.conf /etc/nginx/conf.d/securecloud.conf
 sudo nginx -t    # kỳ vọng: "syntax is ok / test is successful"
 sudo systemctl restart nginx
 ```
+
+> Nếu `nginx -t` báo lỗi trùng `server` block, hãy xóa/comment khối `server { }`
+> mặc định trong `/etc/nginx/nginx.conf` (chỉ giữ lại các dòng `include`).
 
 `nginx/securecloud.conf` đã có sẵn security headers:
 - `Strict-Transport-Security`
@@ -186,17 +194,17 @@ sudo systemctl restart nginx
 Nếu Web Server chưa cài Nginx/deploy, tạo thêm 1 EC2 `t3.micro`:
 
 - Subnet: `securecloud-public`, SG: `securecloud-bastion-sg`
-- Có Public IP, cùng key pair `securecloud-key`
+- Có Public IP, cùng key pair `keypair`
 
-Kết nối móc xích:
+Kết nối móc xích (Amazon Linux dùng user `ec2-user`):
 
 ```bash
 # từ máy cá nhân → Bastion → Web Server
-ssh -i securecloud-key.pem ubuntu@<bastion-public-ip>
-ssh -i securecloud-key.pem ubuntu@10.0.2.10
+ssh -i keypair.pem ec2-user@<bastion-public-ip>
+ssh -i keypair.pem ec2-user@10.0.2.10
 ```
 
-> SSH trực tiếp `ubuntu@<web-public-ip>` sẽ **timeout** — chính là minh chứng
+> SSH trực tiếp `ec2-user@<web-public-ip>` sẽ **timeout** — chính là minh chứng
 > cho Security Group + Private Subnet.
 
 ---
