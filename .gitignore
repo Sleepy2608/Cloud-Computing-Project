@@ -1,0 +1,47 @@
+# ============================================
+# SecureCloud — .gitignore
+# ============================================
+
+# ---------- Hệ điều hành ----------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ---------- Python (web server local) ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.venv/
+venv/
+.venv/
+
+# ---------- Trình soạn thảo ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------- Log ----------
+*.log
+logs/
+
+# ---------- Bí mật / thông tin đăng nhập ----------
+# KHÔNG BAO GIỜ commit private key SSH (key.pem) hay file chứa secrets lên git
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+.env
+.env.*
+!.env.example
+.aws/
+credentials
+*credentials*
+
+# ---------- Node (nếu sau này dùng) ----------
+node_modules/
+dist/
+build/
