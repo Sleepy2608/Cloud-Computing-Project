@@ -6,122 +6,41 @@
 
     <title>SecureCloud Demo</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 900px;
-            text-align: center;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border: 1px solid #38bdf8;
-            border-radius: 20px;
-            color: #38bdf8;
-            margin-bottom: 25px;
-        }
-
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .description {
-            font-size: 20px;
-            color: #cbd5e1;
-            margin-bottom: 40px;
-        }
-
-        .security-card {
-            background: #1e293b;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .security-card h2 {
-            margin-bottom: 20px;
-        }
-
-        .status {
-            font-size: 24px;
-            color: #4ade80;
-            margin-bottom: 15px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .feature {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
-        }
-
-        .feature h3 {
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            color: #94a3b8;
-        }
-
-        footer {
-            margin-top: 40px;
-            color: #64748b;
-        }
-
-        @media (max-width: 700px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<div class="container">
+<header class="container">
+    <div class="logo">🔐 SecureCloud</div>
 
-    <div class="badge">
-        CLOUD SECURITY DEMO
-    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
 
-    <h1>SecureCloud</h1>
+<main class="container">
 
-    <p class="description">
-        HTTPS & Cloud Security Demonstration
-    </p>
+    <section class="hero">
 
-    <div class="security-card">
+        <div class="badge">
+            CLOUD SECURITY DEMO
+        </div>
+
+        <h1>SecureCloud</h1>
+
+        <p>
+            HTTPS &amp; Cloud Security Demonstration
+        </p>
+
+    </section>
+
+    <section class="status">
 
         <h2>Website Security Status</h2>
 
-        <div class="status">
+        <div class="secure">
             🔒 Secure Connection
         </div>
 
@@ -130,9 +49,9 @@
             HTTPS, SSL/TLS and secure cloud access.
         </p>
 
-    </div>
+    </section>
 
-    <div class="features">
+    <section class="features">
 
         <div class="feature">
             <h3>🔐 HTTPS</h3>
@@ -158,13 +77,21 @@
             </p>
         </div>
 
+    </section>
+
+    <div class="hero">
+        <a href="login.html" class="btn">
+            Go to Login
+        </a>
     </div>
 
-    <footer>
-        SecureCloud Demo — Cloud Computing Project
-    </footer>
+</main>
 
-</div>
+<footer>
+    SecureCloud Demo — Cloud Computing Project
+</footer>
+
+<script src="js/security.js"></script>
 
 </body>
 </html>
