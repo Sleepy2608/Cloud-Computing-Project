@@ -2,11 +2,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     checkConnection();
 
+    checkAuth();
+
+    showUser();
+
     const loginForm = document.getElementById("loginForm");
 
     if (loginForm) {
         loginForm.addEventListener("submit", handleLogin);
     }
+
+    const logoutButtons =
+        document.querySelectorAll(".logout-btn");
+
+    logoutButtons.forEach((btn) => {
+        btn.addEventListener("click", handleLogout);
+    });
 });
 
 
@@ -52,10 +63,18 @@ function handleLogin(event) {
 
     if (username === "admin" && password === "admin123") {
 
+        // Demo frontend: lưu trạng thái đăng nhập trong session
+        sessionStorage.setItem("securecloud_logged_in", "true");
+        sessionStorage.setItem("securecloud_user", username);
+
         message.textContent =
-            "✅ Login successful";
+            "✅ Login successful — redirecting...";
 
         message.style.color = "#4ade80";
+
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 800);
 
     } else {
 
@@ -64,4 +83,44 @@ function handleLogin(event) {
 
         message.style.color = "#f87171";
     }
+}
+
+
+function checkAuth() {
+
+    // dashboard.html là khu vực được bảo vệ,
+    // chỉ vào được khi đã đăng nhập.
+    if (window.location.pathname.endsWith("dashboard.html")) {
+
+        const loggedIn =
+            sessionStorage.getItem("securecloud_logged_in");
+
+        if (loggedIn !== "true") {
+            window.location.href = "login.html";
+        }
+    }
+}
+
+
+function showUser() {
+
+    const welcome = document.getElementById("welcomeUser");
+
+    if (!welcome) {
+        return;
+    }
+
+    welcome.textContent =
+        sessionStorage.getItem("securecloud_user") || "user";
+}
+
+
+function handleLogout(event) {
+
+    event.preventDefault();
+
+    sessionStorage.removeItem("securecloud_logged_in");
+    sessionStorage.removeItem("securecloud_user");
+
+    window.location.href = "login.html";
 }
