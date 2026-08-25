@@ -46,4 +46,5 @@ Mở `http://localhost:8000/index.html`.
 ## Tài liệu
 
 - 📄 Hướng dẫn triển khai AWS từng bước: [`docs/DEMO.md`](docs/DEMO.md)
+- 🎬 Kịch bản thuyết trình (demo HTTP + lý thuyết HTTPS): [`docs/THUYET_TRINH.md`](docs/THUYET_TRINH.md)
 
