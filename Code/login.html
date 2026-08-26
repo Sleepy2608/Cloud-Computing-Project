@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SecureCloud - Login</title>
+    <title>SecureCloud - Đăng nhập</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,7 +16,7 @@
     <div class="logo">🔐 SecureCloud</div>
 
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html">Trang chủ</a>
     </nav>
 </header>
 
@@ -25,61 +25,58 @@
     <section class="hero">
 
         <div class="badge">
-            🔒 SECURE LOGIN
+            🔒 Đăng nhập an toàn
         </div>
 
-        <h1>Login</h1>
+        <h1>Đăng nhập</h1>
 
         <p>
-            Secure access demonstration
+            Minh họa truy cập an toàn
         </p>
 
     </section>
 
     <section class="status">
 
-        <h2>Authentication</h2>
+        <h2>Xác thực</h2>
 
         <div class="secure">
-            🔒 Secure Connection
+            🔒 Kết nối an toàn
         </div>
 
         <form id="loginForm">
 
-            <div style="margin: 20px 0;">
+            <div class="field">
                 <input
                     type="text"
                     id="username"
-                    placeholder="Username"
+                    placeholder="Tên đăng nhập"
                     required
-                    style="padding: 12px; width: 80%;"
                 >
             </div>
 
-            <div style="margin: 20px 0;">
+            <div class="field">
                 <input
                     type="password"
                     id="password"
-                    placeholder="Password"
+                    placeholder="Mật khẩu"
                     required
-                    style="padding: 12px; width: 80%;"
                 >
             </div>
 
             <button
                 type="submit"
                 class="btn"
-                style="border: none; cursor: pointer;"
             >
-                Login
+                Đăng nhập
             </button>
 
         </form>
 
-        <p id="loginMessage" style="margin-top: 20px;"></p>
+        <p id="loginMessage"></p>
 
-        <p style="margin-top: 15px; color: #64748b; font-size: 14px;">
-            Demo account: admin / admin123
+        <p class="hint">
+            Tài khoản demo: admin / admin123
         </p>
 
     </section>

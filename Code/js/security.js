@@ -34,14 +34,14 @@ function checkConnection() {
     if (protocol === "https:") {
 
         statusElement.innerHTML =
-            "🔒 Secure HTTPS Connection";
+            "🔒 Kết nối HTTPS an toàn";
 
         statusElement.style.color = "#4ade80";
 
     } else {
 
         statusElement.innerHTML =
-            "⚠️ HTTP Connection";
+            "⚠️ Kết nối HTTP";
 
         statusElement.style.color = "#facc15";
     }
@@ -68,7 +68,7 @@ function handleLogin(event) {
         sessionStorage.setItem("securecloud_user", username);
 
         message.textContent =
-            "✅ Login successful — redirecting...";
+            "✅ Đăng nhập thành công — đang chuyển...";
 
         message.style.color = "#4ade80";
 
@@ -79,7 +79,7 @@ function handleLogin(event) {
     } else {
 
         message.textContent =
-            "❌ Invalid username or password";
+            "❌ Sai tên đăng nhập hoặc mật khẩu";
 
         message.style.color = "#f87171";
     }
@@ -111,7 +111,7 @@ function showUser() {
     }
 
     welcome.textContent =
-        sessionStorage.getItem("securecloud_user") || "user";
+        sessionStorage.getItem("securecloud_user") || "người dùng";
 }
 
 

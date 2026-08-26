@@ -35,6 +35,11 @@ Cloud-Computing-Project/
 
 ## Chạy local
 
+```
+cd \Code"
+python -m http.server 8000
+```
+
 Mở `http://demo-alb-1747899251.ap-southeast-2.elb.amazonaws.com/index.html`
 
 > Ở local website hiện **⚠️ HTTP Connection** (chưa có HTTPS). Khi triển khai lên
