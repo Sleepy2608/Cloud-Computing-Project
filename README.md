@@ -45,14 +45,15 @@ Mở `http://demo-alb-1747899251.ap-southeast-2.elb.amazonaws.com/index.html`
 > Ở local website hiện **⚠️ HTTP Connection** (chưa có HTTPS). Khi triển khai lên
 > AWS và truy cập qua HTTPS sẽ hiện **🔒 Secure HTTPS Connection**.
 
+## AWS
+
+AWS Console region: ap-southeast-2 
+
+Link website: `https://console.aws.amazon.com/console/home?region=ap-southeast-2`
+
 ## Tài liệu
 
 | File | Nội dung |
 |---|---|
-| 🎬 [`docs/THUYET_TRINH.md`](docs/THUYET_TRINH.md) | **Kịch bản thuyết trình** — các bước demo trực tiếp, lý thuyết HTTPS, câu hỏi hội đồng thường gặp và checklist trước khi bảo vệ |
-| 📄 [`docs/DEMO.md`](docs/DEMO.md) | Hướng dẫn triển khai AWS từng bước (theo Console) — kiến trúc, VPC, EC2, ALB, HTTPS |
-| ⌨️ [`docs/huong-dan-chay-tung-buoc.md`](docs/huong-dan-chay-tung-buoc.md) | Runbook CLI — gõ từng lệnh trong PowerShell, ghi rõ thao tác và kết quả mong đợi |
-
-> 💡 Nếu bạn đang chuẩn bị bảo vệ, hãy bắt đầu từ **`THUYET_TRINH.md`** —
-> nó tổng hợp mọi thứ cần trình bày: demo từng bước + phần lý thuyết HTTPS.
-
+| [`docs/DEMO.md`](docs/DEMO.md) | Hướng dẫn triển khai AWS từng bước (theo Console) — kiến trúc, VPC, EC2, ALB, HTTPS |
+| [`docs/huong-dan-chay-tung-buoc.md`](docs/huong-dan-chay-tung-buoc.md) | Runbook CLI — gõ từng lệnh trong PowerShell, ghi rõ thao tác và kết quả mong đợi |
