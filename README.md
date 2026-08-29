@@ -25,7 +25,6 @@ Cloud-Computing-Project/
 │
 ├── docs/
 │   ├── DEMO.md                # Hướng dẫn triển khai AWS từng bước
-│   ├── THUYET_TRINH.md        # Kịch bản thuyết trình + lý thuyết HTTPS
 │   └── huong-dan-chay-tung-buoc.md   # Runbook CLI gõ lệnh từng bước
 │
 ├── .gitignore
@@ -53,7 +52,11 @@ Link website: `https://console.aws.amazon.com/console/home?region=ap-southeast-2
 
 ## Tài liệu
 
-| File | Nội dung |
-|---|---|
-| [`docs/DEMO.md`](docs/DEMO.md) | Hướng dẫn triển khai AWS từng bước (theo Console) — kiến trúc, VPC, EC2, ALB, HTTPS |
-| [`docs/huong-dan-chay-tung-buoc.md`](docs/huong-dan-chay-tung-buoc.md) | Runbook CLI — gõ từng lệnh trong PowerShell, ghi rõ thao tác và kết quả mong đợi |
+| File | Nội dung | Ghi chú |
+|:---|:---|:---|
+| [`docs/DEMO.md`](docs/DEMO.md) | Hướng dẫn triển khai AWS từng bước (theo Console) — kiến trúc, VPC, EC2, ALB, HTTPS | Cụ thể 6 Demo ở mục 10. Kiểm tra Demo trong [`docs/DEMO.md`](docs/DEMO.md) |
+| [`docs/huong-dan-chay-tung-buoc.md`](docs/huong-dan-chay-tung-buoc.md) | Runbook CLI — gõ từng lệnh trong PowerShell, ghi rõ thao tác và kết quả mong đợi | Setup trước khi Demo |
+
+---
+
+<p align="center">Đồ án Điện Toán Đám Mây - Cloud Computing<p>
