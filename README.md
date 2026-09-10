@@ -55,7 +55,8 @@ Mở `http://demo-alb-1747899251.ap-southeast-2.elb.amazonaws.com/index.html`
 
 AWS Console region: ap-southeast-2 
 
-Link website: `https://console.aws.amazon.com/console/home?region=ap-southeast-2`
+Link website: `https://aws.amazon.com/`
+Link website cho console ở server Sydney: `https://console.aws.amazon.com/console/home?region=ap-southeast-2`
 
 ## Tài liệu
 
