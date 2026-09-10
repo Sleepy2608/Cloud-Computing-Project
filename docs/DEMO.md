@@ -9,6 +9,26 @@ Tài liệu này hướng dẫn từng bước triển khai website SecureCloud 
 
 ---
 
+# MỤC LỤC
+
+0. [Kiến trúc mục tiêu](#0-kiến-trúc-mục-tiêu)
+1. [Chuẩn bị nội dung website](#1-chuẩn-bị-nội-dung-website)
+2. [Giai đoạn 1 — Tạo mạng (VPC & Subnet)](#2-giai-đoạn-1-—-tạo-mạng-vpc--subnet)
+3. [Giai đoạn 2 — Tạo Security Groups](#3-giai-đoạn-2-—-tạo-security-groups)
+4. [Giai đoạn 3 — Tạo EC2 Web Server (Private Subnet)](#4-giai-đoạn-3-—-tạo-ec2-web-server-private-subnet)
+5. [Giai đoạn 4 — Cài Nginx & Deploy website](#5-giai-đoạn-4-—-cài-nginx--deploy-website)
+6. [Giai đoạn 5 — (Tùy chọn) Bastion Host](#6-giai-đoạn-5-—-tùy-chọn-bastion-host)
+7. [Giai đoạn 6 — Tạo Target Group & ALB](#7-giai-đoạn-6-—-tạo-target-group--alb)
+8. [Giai đoạn 7 — Domain & SSL Certificate (ACM)](#8-giai-đoạn-7-—-domain--ssl-certificate-acm)
+9. [Giai đoạn 8 — HTTPS Listener & Redirect](#9-giai-đoạn-8-—-https-listener--redirect)
+10. [Giai đoạn 9 — Kiểm tra Demo](#10-giai-đoạn-9-—-kiểm-tra-demo)
+11. [Demo khi thuyết trình](#11-demo-khi-thuyết-trình)
+12. [Thứ tự thực hiện tóm tắt](#12-thứ-tự-thực-hiện-tóm-tắt)
+13. [Lưu ý chi phí & dọn dẹp](#13-lưu-ý-chi-phí--dọn-dẹp)
+14. [Checklist trước ngày demo](#14-checklist-trước-ngày-demo)
+
+---
+
 ## 0. Kiến trúc mục tiêu
 
 ```text
@@ -319,9 +339,51 @@ Truy cập https://.../dashboard.html khi chưa đăng nhập  →  bị chuyể
 Bấm Logout                                              →  quay về Login
 ```
 
+## 11. Demo khi thuyết trình
+
+### Demo 1 — Website chạy trên cloud, truy cập qua ALB
+- Mở trình duyệt: `http://demo-alb-1747899251.ap-southeast-2.elb.amazonaws.com/`
+- Nói: *"Website được phục vụ bởi Nginx trên EC2 nằm trong Private Subnet, người dùng truy cập qua Load Balancer."*
+- Chỉ vào **"⚠️ HTTP Connection"** và dòng **"Not secure"** trên thanh địa chỉ.
+- Nói: *"Đây là vì chúng ta đang truy cập bằng HTTP — dữ liệu chưa được mã hóa. Đây chính là lý do ta cần HTTPS."*
+
+### Demo 2 — Login → Dashboard → Logout (kiểm soát truy cập)
+- Bấm **Login** → nhập `admin / admin123` → vào Dashboard.
+- Nói: *"Trang Dashboard được bảo vệ: mở thẳng dashboard.html mà chưa đăng nhập sẽ bị chuyển về trang Login — minh họa access control."*
+- Bấm **Logout** → về Login.
+
+### Demo 3 — Private Subnet không truy cập trực tiếp
+- Mở EC2 console → chỉ vào Web Server: **Public IPv4 = None**, chỉ có Private IP `10.0.2.202`.
+- Nói: *"Dù không có IP công khai, website vẫn hoạt động — vì mọi request đi qua ALB. Truy cập trực tiếp từ Internet sẽ thất bại."*
+
+### Demo 4 — Security Group (quyền tối thiểu)
+- Mở EC2 → Security Groups, hiện 3 nhóm:
+  - `alb-sg`: 80/443 ← Internet
+  - `web-sg`: 80/443 ← ALB, 22 ← Bastion
+  - `bastion-sg`: 22 ← IP cá nhân
+- Nói: *"Web Server không mở bất kỳ cổng nào cho Internet. SSH trực tiếp bị chặn; chỉ SSH qua Bastion vào được."*
+
+### Demo 5 — Security Headers (chạy trên máy, hoặc trong Web Server)
+```bash
+curl -I http://demo-alb-1747899251.ap-southeast-2.elb.amazonaws.com/
+```
+(Trên PowerShell dùng `curl.exe -I ...`)
+- Chỉ vào 4 header:
+  - `Strict-Transport-Security`
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options: DENY`
+  - `Referrer-Policy`
+- Nói: *"Nginx thêm các header này để chống clickjacking, MIME sniffing và ép trình duyệt dùng HTTPS."*
+
+### Demo 6 — Logging
+- SSH vào Web Server: `ssh webserver` → `sudo tail -f /var/log/nginx/access.log`
+- Truy cập website → thấy request mới hiện ra.
+- Nói: *"Mọi truy cập đều được ghi log để giám sát và phát hiện bất thường."*
+
+
 ---
 
-## 11. Thứ tự thực hiện tóm tắt
+## 12. Thứ tự thực hiện tóm tắt
 
 ```text
 1.  Website local hoạt động
@@ -339,7 +401,7 @@ Bấm Logout                                              →  quay về Login
 
 ---
 
-## 12. Lưu ý chi phí & dọn dẹp
+## 13. Lưu ý chi phí & dọn dẹp
 
 Tài nguyên có thể phát sinh chi phí:
 - EC2 (2 máy nếu có Bastion)
@@ -352,7 +414,7 @@ Tài nguyên có thể phát sinh chi phí:
 
 ---
 
-## 13. Checklist trước ngày demo
+## 14. Checklist trước ngày demo
 
 - [ ] `http://domain` tự chuyển sang `https://domain` (301)
 - [ ] Trình duyệt hiện ổ khóa, certificate `Issued`
