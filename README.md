@@ -32,7 +32,14 @@ Cloud-Computing-Project/
 └── README.md
 ```
 
-## Chạy local
+## Run guide
+
+**Git clone project**
+```
+git clone https://github.com/Sleepy2608/Cloud-Computing-Project.git
+```
+
+**Chạy local website bằng Python HTTP server**
 
 ```
 cd \Code"
@@ -41,8 +48,8 @@ python -m http.server 8000
 
 Mở `http://demo-alb-1747899251.ap-southeast-2.elb.amazonaws.com/index.html`
 
-> Ở local website hiện **⚠️ HTTP Connection** (chưa có HTTPS). Khi triển khai lên
-> AWS và truy cập qua HTTPS sẽ hiện **🔒 Secure HTTPS Connection**.
+> Ở local website hiện **⚠️ HTTP Connection** (chưa có HTTPS).<br>
+> Khi triển khai lên AWS và truy cập qua HTTPS sẽ hiện **🔒 Secure HTTPS Connection**.
 
 ## AWS
 
@@ -56,6 +63,8 @@ Link website: `https://console.aws.amazon.com/console/home?region=ap-southeast-2
 |:---|:---|:---|
 | [`docs/DEMO.md`](docs/DEMO.md) | Hướng dẫn triển khai AWS từng bước (theo Console) — kiến trúc, VPC, EC2, ALB, HTTPS | Cụ thể 6 Demo ở mục 10. Kiểm tra Demo trong [`docs/DEMO.md`](docs/DEMO.md) |
 | [`docs/huong-dan-chay-tung-buoc.md`](docs/huong-dan-chay-tung-buoc.md) | Runbook CLI — gõ từng lệnh trong PowerShell, ghi rõ thao tác và kết quả mong đợi | Setup trước khi Demo |
+
+> Nên đọc trước 2 file trên để hiểu cách triển khai và chạy demo.
 
 ---
 
