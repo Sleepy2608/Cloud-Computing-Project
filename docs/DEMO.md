@@ -3,9 +3,21 @@
 Tài liệu này hướng dẫn từng bước triển khai website SecureCloud lên AWS
 để trình diễy đề tài **"Triển khai HTTPS và bảo mật truy cập cho Website Cloud"**.
 
-> **Yêu cầu trước:** website đã hoạt động local (xem `README.md`), có tài khoản AWS
+> **Yêu cầu trước:** Đọc file `README.md` để hiểu cách website hoạt động local và file `huong-dan-chay-tung-buoc.md`, có tài khoản AWS
 > và một **domain thật** (để cấp SSL certificate). Nếu chưa có domain, làm đến
 > bước ALB + HTTP trước, thêm HTTPS sau.
+
+---
+
+# Thông tin demo thực tế
+
+- URL: `http://demo-alb-1747899251.ap-southeast-2.elb.amazonaws.com/`
+- Region: `ap-southeast-2` — Sydney
+- VPC: `vpc-07645c28904d7c3d1`
+- Bastion: `i-0d40321d310bbc20c`, Public IP `13.211.219.188`
+- Web Server: `i-0f07f5d46314ce566`, Private IP `10.0.2.202`
+- Instance type: `t3.micro`
+- Tài khoản demo: `admin / admin123`
 
 ---
 
@@ -297,6 +309,14 @@ Value: securecloud-alb (chọn Alias → chọn ALB)
 ---
 
 ## 10. Giai đoạn 9 — Kiểm tra Demo
+
+## Triển khai HTTPS và bảo mật truy cập cho Website Cloud
+
+> **Phạm vi demo:** Hệ thống AWS đã chạy Website qua ALB, EC2 Private Subnet,
+> Bastion, NAT Gateway, Security Group và Nginx Security Headers. Vì chưa có
+> domain riêng nên HTTPS/ACM/redirect 301 được trình bày theo quy trình thiết kế;
+> demo trực tiếp hiện dùng HTTP.
+
 
 ### Demo 1 — HTTP → HTTPS Redirect
 ```
