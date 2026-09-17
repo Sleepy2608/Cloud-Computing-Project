@@ -24,7 +24,9 @@ Cloud-Computing-Project/
 │   └── securecloud.conf       # Cấu hình Nginx + Security Headers
 │
 ├── docs/
-│   ├── DEMO.md                # Hướng dẫn triển khai AWS từng bước
+│   ├── reports                       # Báo cáo đồ án 
+│   ├── results                       # Kết quả demo             
+│   ├── DEMO.md                       # Hướng dẫn triển khai AWS từng bước
 │   └── huong-dan-chay-tung-buoc.md   # Runbook CLI gõ lệnh từng bước
 │
 ├── .gitignore
@@ -62,6 +64,8 @@ Link website cho console ở server Sydney: `https://console.aws.amazon.com/cons
 
 | File | Nội dung | Ghi chú |
 |:---|:---|:---|
+| [`docs/reports`](docs/reports) | Báo cáo đồ án Điện Toán Đám Mây (Cloud Computing) | Final reports |
+| [`docs/results`](docs/results) | Kết quả demo triển khai HTTPS và bảo mật truy cập cho website cloud | Giải thích rõ hơn ở trong file báo cáo |
 | [`docs/DEMO.md`](docs/DEMO.md) | Hướng dẫn triển khai AWS từng bước (theo Console) — kiến trúc, VPC, EC2, ALB, HTTPS | Cụ thể 6 Demo ở mục 10. Kiểm tra Demo trong [`docs/DEMO.md`](docs/DEMO.md) |
 | [`docs/huong-dan-chay-tung-buoc.md`](docs/huong-dan-chay-tung-buoc.md) | Runbook CLI — gõ từng lệnh trong PowerShell, ghi rõ thao tác và kết quả mong đợi | Setup trước khi Demo |
 
